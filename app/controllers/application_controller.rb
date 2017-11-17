@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    session[:user_id] = 1
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
@@ -21,6 +20,7 @@ class ApplicationController < ActionController::Base
     session[:user_id] = nil
     session[:expires_at] = nil
     @current_user = nil
+    redirect_to login_url
   end
 
   def session_expiration

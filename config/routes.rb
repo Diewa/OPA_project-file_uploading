@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
   end
+
+  resources :users, only: [:new, :create]
 end

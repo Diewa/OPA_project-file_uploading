@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
   def index
-    @resumes = User.first.resumes.all
+    @resumes = current_user.resumes.all
   end
 
   def new
@@ -12,8 +12,8 @@ class ResumesController < ApplicationController
     @resume.file_name = resume_params[:attachment].original_filename
     @resume.file_path = resume_params[:attachment].path
     @resume.file_size = resume_params[:attachment].size
-    @resume.user = User.first
-    check_resume = Resume.find_by(file_name: @resume.file_name)
+    @resume.user = current_user
+    check_resume = current_user.resumes.find_by(file_name: @resume.file_name)
 
     if check_resume && check_resume.file_size == @resume.file_size
       redirect_to resumes_path, notice:  "This file already exists!"

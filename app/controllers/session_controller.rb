@@ -6,7 +6,6 @@ class SessionController < ApplicationController
   end
 
   def create
-    byebug
     if(user = User.authenticate(login_params))
       session[:user_id] = user.id
       session[:expires_at] = Time.current + 45.minutes
