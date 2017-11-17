@@ -15,6 +15,18 @@ ActiveRecord::Schema.define(version: 20171116214159) do
   create_table "resumes", force: :cascade do |t|
     t.string   "name"
     t.string   "attachment"
+    t.string   "file_name"
+    t.integer  "file_size"
+    t.string   "file_path"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_resumes_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "login"
+    t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

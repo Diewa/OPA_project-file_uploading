@@ -14,6 +14,9 @@
   <thead>.
   <tr>
     <th>Name</th>
+    <th>File name</th>
+    <th>File path</th>
+    <th>File size</th>
     <th>Download Link</th>
     <th> </th>
   </tr>
@@ -24,6 +27,9 @@
 
       <tr>
         <td><%= resume.name %></td>
+        <td><%= resume.file_name %></td>
+        <td><%= resume.file_path %></td>
+        <td><%= resume.file_size %></td>
         <td><%= link_to "Download Resume", resume.attachment_url %></td>
         <td><%= button_to "Delete",  resume, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{resume.name}?" %></td>
       </tr>
